@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" name="parcel-cost-api" packages="ph.com.mynt.parcelcostapi">
+	<Appenders>
+        <Console name="stdout" target="SYSTEM_OUT">
+        	<PatternLayout pattern="%d{dd MMM yyyy HH:mm:ss.SSS} %-5p [%-7t] %F:%L - %m%n" />
+        </Console>
+        <Console name="stderr" target="SYSTEM_ERR">
+            <PatternLayout pattern="%d{dd MMM yyyy HH:mm:ss.SSS} %-5p [%-7t] %F:%L - %m%n" />
+            <Filters>
+            	<ThresholdFilter level="WARN" onMatch="ACCEPT" />
+            </Filters>
+        </Console>
+        <RollingFile name="logtofile" fileName="C:\Users\Ronald\Desktop\Java-Projects\parcel-cost-api\logs\parcel-cost-api-logs-${date:MMddyyyy}.txt"
+        				filePattern="C:\Users\Ronald\Desktop\Java-Projects\parcel-cost-api\logs\archived-logs\$${date:MM-yyyy}\parcel-cost-api-logs-%d{yyyyMMdd}-%i.txt.zip">
+        	<PatternLayout>
+        		<Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+        	</PatternLayout>
+        	<Policies>
+        		<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+        		<SizeBasedTriggeringPolicy size="10 KB"/>
+        	</Policies>
+        	<DefaultRolloverStrategy max="1000" />
+        </RollingFile>
+        
+	</Appenders>
+    <Loggers>
+    	<Logger name="parcel.cost.api" level="INFO" additivity="false">
+    		<AppenderRef ref="logtofile" />
+    	</Logger>
+	    <Root level="INFO">
+	        <AppenderRef ref="stdout" />
+	        <AppenderRef ref="stderr" />
+	        <AppenderRef ref="logtofile" />
+	    </Root>
+    </Loggers>
+</Configuration>
