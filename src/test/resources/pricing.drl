@@ -1,0 +1,43 @@
+package KieRule;
+import ph.com.mynt.parcelcostapi.model.WeightPriceRule;
+import ph.com.mynt.parcelcostapi.model.VolumePriceRule;
+
+rule "REJECT"
+
+when
+priceCondition : WeightPriceRule(weight>=51);
+then
+priceCondition.setPrice(0);
+end;
+
+rule "HEAVY PARCEL"
+
+when
+priceCondition : WeightPriceRule(weight>=10 && weight<=50);
+then
+priceCondition.setPrice(20);
+end;
+
+rule "SMALL PARCEL"
+
+when
+priceCondition : VolumePriceRule(volume<=1500);
+then
+priceCondition.setPrice(0.03);
+end;
+
+rule "MEDIUM PARCEL"
+
+when
+priceCondition : VolumePriceRule(volume>=1501 && volume<=2500);
+then
+priceCondition.setPrice(0.04);
+end;
+
+rule "LARGE PARCEL"
+
+when
+priceCondition : VolumePriceRule(volume>=2501 && volume<=3500);
+then
+priceCondition.setPrice(0.05);
+end;
