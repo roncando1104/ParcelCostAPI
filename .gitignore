@@ -1,0 +1,8 @@
+.classpath
+.factorypath
+.project
+.settings
+.idea
+target
+logs
+JUnitReport

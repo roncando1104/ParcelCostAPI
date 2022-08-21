@@ -3,7 +3,7 @@ package ph.com.mynt.parcelcostapi.model;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class WeightPriceRule {
+public class WeightPriceRule extends Format{
 
     private int weight;
     private double price;

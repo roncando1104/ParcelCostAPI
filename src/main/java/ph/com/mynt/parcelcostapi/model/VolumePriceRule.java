@@ -3,7 +3,7 @@ package ph.com.mynt.parcelcostapi.model;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class VolumePriceRule {
+public class VolumePriceRule extends Format {
     private double volume;
     private int height;
     private int width;
